@@ -62,11 +62,12 @@ def ubah_mahasiswa(nama: str, mahasiswa: Mahasiswa):
 def hapus_mahasiswa(nama: str):
 
     for i, data in enumerate(data_mahasiswa):
-        if data.nama == nama:
-            data_mahasiswa.pop(i)
+        if data.nama.strip().lower() == nama.strip().lower():
+            data_dihapus = data_mahasiswa.pop(i)
 
             return {
-                "message": f"Data mahasiswa {nama} berhasil dihapus"
+                "message": f"Data mahasiswa {data_dihapus.nama} berhasil dihapus",
+                "data": data_dihapus
             }
 
     return {
